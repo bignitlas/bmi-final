@@ -19,9 +19,7 @@
 
         // Prepare labels (dates) and BMI values for the chart
         const labels = storedData.map(entry => entry.date); // Extract dates
-        const bmiValues = storedData.map(entry => {
-            const bmi = (entry.weight / (entry.height ** 2)).toFixed(2); // Calculate BMI
-            return parseFloat(bmi);
+        const bmiValues = storedData.map(entry => parseFloat(entry.bmi));
         });
 
         // Create the chart
@@ -62,6 +60,51 @@
                     }
                 }
             }
+    if (storedData.length === 0) {
+        document.querySelector('.container').innerHTML = '<h1>No BMI data to display</h1>';
+    } else {
+    // Proceed with chart rendering
+    const labels = storedData.map(entry => entry.date);
+    const bmiValues = storedData.map(entry => parseFloat(entry.bmi));
+    const ctx = document.getElementById('bmiChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'BMI',
+                data: bmiValues,
+                borderColor: 'blue',
+                backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'BMI'
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
         });
     </script>
 </body>
