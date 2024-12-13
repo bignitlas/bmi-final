@@ -14,6 +14,9 @@
         <button onclick="location.href='menu.html'">Return to Menu</button>
     </div>
     <script>
+        //Debugging test
+        console.log('Stored BMI Data:', localStorage.getItem('bmiData'));
+        
         // Retrieve data from local storage
         const storedData = JSON.parse(localStorage.getItem('bmiData')) || [];
 
