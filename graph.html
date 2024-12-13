@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>BMI Graph</h1>
+        <canvas id="bmiChart"></canvas>
+        <button onclick="location.href='menu.html'">Return to Menu</button>
+    </div>
+    <script>
+        // Retrieve data from local storage
+        const storedData = JSON.parse(localStorage.getItem('bmiData')) || [];
+
+        // Prepare labels (dates) and BMI values for the chart
+        const labels = storedData.map(entry => entry.date); // Extract dates
+        const bmiValues = storedData.map(entry => {
+            const bmi = (entry.weight / (entry.height ** 2)).toFixed(2); // Calculate BMI
+            return parseFloat(bmi);
+        });
+
+        // Create the chart
+        const ctx = document.getElementById('bmiChart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels, // Dates
+                datasets: [{
+                    label: 'BMI',
+                    data: bmiValues, // BMI values
+                    borderColor: 'blue',
+                    backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'BMI'
+                        },
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

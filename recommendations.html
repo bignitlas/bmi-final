@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Recommendations</h1>
+        <h2>Your BMI: <span id="bmiValue"></span></h2>
+        <p id="recommendation"></p>
+    </div>
+    <button onclick="location.href='menu.html'">Return to Menu</button>
+
+    <script>
+        // Retrieve BMI from localStorage
+        var bmi = localStorage.getItem('calculatedBMI');
+    
+        // Display the BMI
+        document.getElementById('bmiValue').innerText = bmi;
+    
+        // Provide recommendations based on BMI
+        var recommendationText = '';
+    
+        if (bmi < 18.5) {
+            recommendationText = 'You are underweight. Consider a balanced diet with adequate calories.';
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+            recommendationText = 'You have a healthy weight. Keep up the good work!';
+        } else if (bmi >= 25 && bmi < 29.9) {
+            recommendationText = 'You are overweight. Consider a balanced diet and regular exercise.';
+        } else {
+            recommendationText = 'You are obese. It is important to consult a healthcare provider for personalized advice.';
+        }
+    
+        // Display recommendation
+        document.getElementById('recommendation').innerText = recommendationText;
+    </script>
+</body>
+</html>

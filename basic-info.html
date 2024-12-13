@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Information</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Basic Information</h1>
+        <form id="infoForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required>
+            <label for="insurance">Insurance Card Number:</label>
+            <input type="text" id="insurance" required>
+            <button type="submit">Save</button>
+        </form>
+        <h2>Change Password</h2>
+        <form id="passwordForm">
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" required>
+            <button type="submit">Change Password</button>
+        </form>
+    </div>
+    <button onclick="location.href='menu.html'">Return to Menu</button>
+    <script>
+        document.getElementById("infoForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            alert("Information saved!");
+        });
+
+        document.getElementById("passwordForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            alert("Password changed!");
+        });
+    </script>
+</body>
+</html>

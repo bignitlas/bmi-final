@@ -1,0 +1,191 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #333;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+}
+
+h1, h2 {
+    font-weight: 600;
+    color: #1c1c1e;
+    margin: 0 0 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #2c2c2e;
+    text-align: center;
+}
+
+input, button, select {
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 10px 15px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 15px;
+    outline: none;
+    text-align: center;
+    align-self: center;
+}
+
+input:focus, button:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+/* Buttons */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    align-self: center;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+button.return {
+    margin-top: 20px;
+    background-color: #4caf50;
+}
+
+button.return:hover {
+    background-color: #388e3c;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+form input[type="date"] {
+    color: #6c757d;
+}
+
+input, button {
+    width: 100%; 
+    max-width: 300px;
+    text-align: center; 
+    margin-bottom: 15px; 
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+/* Chart Container */
+canvas {
+    margin-top: 20px;
+    max-width: 90%;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+/* Navigation Buttons */
+.nav-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: 2px solid #007bff;
+    color: #007bff;
+    background-color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* menu styling */
+ul.menu {
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+}
+
+/* Style for menu items */
+ul.menu li {
+    background-color: #007bff; 
+    color: white; 
+    padding: 10px 20px; 
+    border-radius: 25px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s, transform 0.3s; 
+}
+
+/* Hover effect for list items */
+ul.menu li:hover {
+    background-color: #0056b3; 
+    transform: scale(1.05); 
+}
+
+/* Style for links inside list items */
+ul.menu li a {
+    text-decoration: none; 
+    color: white; 
+    font-weight: 600; 
+    font-size: 16px; 
+}
+
+.menu-container {
+    margin: 20px 0; 
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
