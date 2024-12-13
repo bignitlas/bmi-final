@@ -31,8 +31,25 @@
             // Calculate BMI
             var bmi = weight / (height * height);
     
-            // Store BMI in localStorage
-            localStorage.setItem('calculatedBMI', bmi.toFixed(2)); // Store BMI with 2 decimal places
+                        // Get the current date
+            var currentDate = new Date().toLocaleDateString();
+    
+            // Create an object to store height, weight, BMI, and date
+            var bmiData = {
+                date: currentDate,
+                height: height,
+                weight: weight,
+                bmi: bmi.toFixed(2)
+            };
+    
+            // Retrieve existing BMI data from localStorage (if any)
+            var storedData = JSON.parse(localStorage.getItem('bmiData')) || [];
+    
+            // Add the new data entry
+            storedData.push(bmiData);
+    
+            // Store updated data in localStorage
+            localStorage.setItem('bmiData', JSON.stringify(storedData));
     
             // Redirect to the recommendations page
             window.location.href = 'recommendations.html'; // Assuming recommendations page URL
