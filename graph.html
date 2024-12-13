@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graph</title>
+    <title>BMI Graph</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -13,62 +13,62 @@
         <canvas id="bmiChart"></canvas>
         <button onclick="location.href='menu.html'">Return to Menu</button>
     </div>
-    <script>        
-        // Retrieve data from local storage
-const storedData = JSON.parse(localStorage.getItem('bmiData')) || [];
 
-// Check if there's any data to display
-if (storedData.length === 0) {
-    document.querySelector('.container').innerHTML = '<h1>No BMI data to display</h1>';
-} else {
-    // Prepare labels (dates) and BMI values for the chart
-    const labels = storedData.map(entry => entry.date);
-    const bmiValues = storedData.map(entry => parseFloat(entry.bmi));
+    <script>
+        // Retrieve data from localStorage
+        const storedData = JSON.parse(localStorage.getItem('bmiData')) || [];
+        console.log('Stored Data:', storedData);  // Debugging log to check data retrieval
 
-    console.log('Chart Labels:', labels);
-    console.log('Chart Data:', bmiValues);
+        // Check if there's any data to display
+        if (storedData.length === 0) {
+            document.querySelector('.container').innerHTML = '<h1>No BMI data to display</h1>';
+        } else {
+            // Prepare labels (dates) and BMI values for the chart
+            const labels = storedData.map(entry => entry.date);  // Extract dates
+            const bmiValues = storedData.map(entry => parseFloat(entry.bmi));  // Extract BMI values
+            console.log('Chart Labels:', labels);  // Debugging log to check labels
+            console.log('Chart Data:', bmiValues);  // Debugging log to check BMI values
 
-    // Create the chart
-    const ctx = document.getElementById('bmiChart').getContext('2d');
-    const chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels, // Dates
-            datasets: [{
-                label: 'BMI',
-                data: bmiValues, // BMI values
-                borderColor: 'blue',
-                backgroundColor: 'rgba(0, 123, 255, 0.2)',
-                fill: true
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'top',
-                }
-            },
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Date'
-                    }
+            // Create the chart
+            const ctx = document.getElementById('bmiChart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,  // Dates
+                    datasets: [{
+                        label: 'BMI',
+                        data: bmiValues,  // BMI values
+                        borderColor: 'blue',
+                        backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                        fill: true
+                    }]
                 },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'BMI'
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        }
                     },
-                    beginAtZero: true
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'BMI'
+                            },
+                            beginAtZero: true
+                        }
+                    }
                 }
-            }
+            });
         }
-    });
-}
-        });
     </script>
 </body>
 </html>
