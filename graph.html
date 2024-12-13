@@ -15,65 +15,28 @@
     </div>
     <script>        
         // Retrieve data from local storage
-        const storedData = JSON.parse(localStorage.getItem('bmiData')) || [];
+const storedData = JSON.parse(localStorage.getItem('bmiData')) || [];
 
-        // Prepare labels (dates) and BMI values for the chart
-        const labels = storedData.map(entry => entry.date); // Extract dates
-        const bmiValues = storedData.map(entry => parseFloat(entry.bmi));
-        });
-
-        // Create the chart
-        const ctx = document.getElementById('bmiChart').getContext('2d');
-        const chart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: labels, // Dates
-                datasets: [{
-                    label: 'BMI',
-                    data: bmiValues, // BMI values
-                    borderColor: 'blue',
-                    backgroundColor: 'rgba(0, 123, 255, 0.2)',
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                    }
-                },
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: 'Date'
-                        }
-                    },
-                    y: {
-                        title: {
-                            display: true,
-                            text: 'BMI'
-                        },
-                        beginAtZero: true
-                    }
-                }
-            }
-    if (storedData.length === 0) {
-        document.querySelector('.container').innerHTML = '<h1>No BMI data to display</h1>';
-    } else {
-    // Proceed with chart rendering
+// Check if there's any data to display
+if (storedData.length === 0) {
+    document.querySelector('.container').innerHTML = '<h1>No BMI data to display</h1>';
+} else {
+    // Prepare labels (dates) and BMI values for the chart
     const labels = storedData.map(entry => entry.date);
     const bmiValues = storedData.map(entry => parseFloat(entry.bmi));
+
+    console.log('Chart Labels:', labels);
+    console.log('Chart Data:', bmiValues);
+
+    // Create the chart
     const ctx = document.getElementById('bmiChart').getContext('2d');
-    new Chart(ctx, {
+    const chart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: labels,
+            labels: labels, // Dates
             datasets: [{
                 label: 'BMI',
-                data: bmiValues,
+                data: bmiValues, // BMI values
                 borderColor: 'blue',
                 backgroundColor: 'rgba(0, 123, 255, 0.2)',
                 fill: true
